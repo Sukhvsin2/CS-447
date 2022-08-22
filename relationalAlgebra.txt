@@ -1,0 +1,110 @@
+ Relation Algebra
+  Operations: Union, Intersection, Diffrence
+  Operations that Removes parts: Selection(Rows) and Projection(Columns)
+  Operations that Combines parts: Cartesian product and "join" operations
+  Rename operations: Renames the realation schema that concludes table name or attributes.
+  
+  Rules:
+    R & S have to be schema which are identical 
+  
+ Union: R ∪ U
+ {a,b,c} ∪ {b,c,d} -> {a,b,c,d}
+ 
+ Interseaction: R ∩ S
+ {a,b,c} ∩ {b,c,d} -> {b,c}
+ 
+ Diffrence: R \ S
+ {a,b,c} \ {b,c,d} -> {a}
+ 
+ ---------------------------------------------------------------------
+ 
+ Table R
+ Name           Address       Birthdate
+ Carrie Fisher  123 Conyan    12/05/72
+ Mark Hammill   505 Pine st.  05/04/73
+ 
+ Table S
+ Name           Address       Birthdate
+ Mark Hammill  505 Pine st.  05/04/73
+ Harrison Ford 123 Skull     02/28/69
+ 
+ R ∪ S
+ Name           Address Birthdate
+ Carrie Fisher  ////    ////
+ Mark Hammill   ////    //// 
+ Harrison Ford  ////    ////
+ 
+ R ∩ S
+ Name           Address Birthdate
+ Mark Hammill   ////    //// 
+ 
+ R \ S
+ Name           Address Birthdate
+ Carrie Fisher  ////    ////
+ 
+ ----------------------------------------------------------------------
+ Projection:
+  - Produces a subset S from R one or more of Rs attributes are included in s.
+  - Denoted π A1, A2,.......An(R) where Ai represents the ith attribute.
+  Example: πName (R)
+            Name
+            Carrie Fisher
+            Mark Hammill
+            
+           πName, Birthday (R)
+            Name            Birthday
+            Carrie Fisher   ////
+            Mark Hammill    ////
+  
+  Selection:
+   - Produces a subset of S of R where S contains tuples of R that satisfy some condition C.
+   - C is a conditional expression
+   - Denoted σc(R)
+   Example: σBirthdate > 01/01/70(S)
+            Name          Address BirthDate
+            Mark Hammill  ////    ///
+  
+  Cartesian Product
+    - Produces all pairs of tuples from the sets R and S.
+    (row 1 of R with all rows of S,
+     row 2 of R with all rows of S,
+     ...)
+    - Denoted R x S
+    Example: R x S
+             R.Name           R.Address       R.Birthdate   R.Name           R.Address       R.Birthdate
+             Carrie Fisher    123 Conyan      12/05/72      Mark Hammill     505 Pine st.    05/04/73
+             Carrie Fisher    123 Conyan      12/05/72      Harrison  Ford   123 Skull       02/28/69
+             Mark Hammill     505 Pine st.    05/04/73      Mark Hammill     505 Pine st.    05/04/73
+             Mark Hammill     505 Pine st.    05/04/73      Harrison Ford    123 Skull       02/28/69
+             .
+             .
+             .
+             Checkout examples in ppt
+             
+             
+  Natural Join:
+    - Produces a relation of pares of tuples from R and S that have one or more attributes that match
+    - Resuling Paring is called a Joined Tuple
+    - Denoted R ⋈ S
+    Example: R ⋈ S check out PPT
+    
+    
+  Theta Join:
+    - Produces a relation of pares of tuples from R and S that have one or more attributes that match on condition
+    - Denoted R ⋈c S
+    - Select tuples that Satisfy C
+    Example: R ⋈max_speed > 200 S check out PPT
+             Trains x Planes (PPT*)
+             1. Cross Product
+             2. Compare Maxspeed in table should be  >= 200
+             
+  Combining Operations:
+    - Just like mathematical algebra allows up to combine operations, relational algeba to combine operations
+    - Use raenthese to indicate order of operations.
+    
+  Question Example:
+    πTitle, year(σlength > 100(Movies) ∩ σstudio="Fox"(Studios))
+    
+    
+    
+  
