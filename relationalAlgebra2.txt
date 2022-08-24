@@ -1,0 +1,36 @@
+Renaming Operator:
+  - Useful to rename an attributte or relation when performing operations.
+  - Avoid cumbersome names when relations have identical attributes
+  - Denoted ρA1, A2, A3,.....An(R) for relation R
+  - Denote the operation ρs(R)
+  Example:
+    Syntax : ρ(newName1, newName2, newName3)(TableName)
+             ρ(type. range, yr)(Tesla_cars)
+    
+Restricting Relations:
+  - Key Contraints
+    1) A key Atrributes is one or more attributes that are unique in the relation.
+    2) Key may be single attribute in a relation.
+    3) Key may be 2 or more attribute in a relation.
+    4) We constcted all pairs of tuples in a relation, no pair may agree....... check ppt*
+    
+  - Referential Integreity Constraints
+    1) Value of an attribute in one relation must appear generally in an another relation but 
+      could also be in same relation.
+    2) Often used to connect tuples across relations.
+    Example:
+      Syntax: π#tablename(2ndTableName) ⊆ π#colName(2tbColName)
+              π#battery(Tesla_Cars) ⊆ π#size(Ev_battery_size)
+------------------------------------------------------------------------------------------------------------------------
+
+Display all the titles of movies that are comedy
+  πtitles ( σgenre = "Comedy"(Movies))
+  
+Displays the names of the starts in the movie name is "Start Wars"
+  πStartName(σtitle="star wars"(MovieTitle))
+
+Display the name of every movie executive who lives in hollywood and networth > 15mil
+  πExecName(σadress="hollywood"(MovieExec) ∩ σnetWorth>15(MovieExec))
+
+Display all the starts that stareed in a comedy
+  DO it by yourself***
