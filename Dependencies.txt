@@ -1,0 +1,38 @@
+Query Questions:
+  * Display all the female moviestars from the movie startwars.
+      πName(σgender="F" (σmovieTitle="StarWars" (MovieStar ⋈name=starName StartIn) ) )
+  
+  * Display the name and address of all the studio presidents
+      πExecName, Address(ρMovieExec(ExecName, home, certNum, netWorth)(MovieExec) ⋈certnum=presidentCertNum Studio)
+---------------------------------------------------------------------------------------------------------------------------
+
+# Dependencies
+  * We can describe the quality of a relational schema(design) using the concept of a dependencies.
+  * It also tells how to fix or improve design.
+  * Problems in the DBMS is Anomalies
+  * We'll use the concept of a function dependency to  define normal forms for relational schemas.
+  * Normalization is process of eleminating Anomalies.
+  # Functional Dependency(FD) - Generalization of the idea of a key.
+    * A FD on a realtion R is a statement of the form " If two tuples of R agree on all the attributes {A_1, A_2, ...., A_N} (_ means sub)
+      then they must also agree of attributes {B_1, B_2, ....., B_M}. "
+      
+      Example:
+        A_1, A_2, A_3 ..... A_N functionally determines B_1, B_2, B_3 ...... B_M.
+        
+        R     |A_1, A_2, ...., A_N|     |B_1, B_2, ...., B_M|                      
+        t     |  ***************  |     | ***************   |     
+        u     |  ***************  |     | ***************   |  
+        
+                                    ^
+                                    |
+        if agree on all [A] values then we must also agree on all [B] values
+        A_1, A_2 ----------> B_1, B_2, B_3
+        ()
+        
+  # Multivalue Dependencies
+----------------------------------------------------------------------------------------------------------------------------
+New Design
+  MovieList(title, year, length, genre, StudioName, StarName) --> Are there Anomalies??
+    Title, Year, Functionally determined Length, Genre, StudioName
+    title, year, ----------------------> length, genre, studioName
+  
